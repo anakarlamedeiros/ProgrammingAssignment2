@@ -1,5 +1,4 @@
 ## This R file contains two functions that perform operations over a supplied matrix.
-## Note that both functions assume that the supplied matrix is invertible!
 ##
 ## The functions are:
 ##
@@ -14,16 +13,13 @@
 ##      2. cachedMatrix <- makeCacheMatrix(m)      ## stores the matrix 'm' in a cache
 ##      3. inverse_m <- cacheSolve(cachedMatrix)   ## returns the inverse of 'm' stored in 'cachedMatrix' 
 ##
+## Note: Both functions assume that the supplied matrix is invertible!
 
 
-
-##  Funtion: makeCachedMatrix:
-##
+##  Funtion: makeCachedMatrix.
 ##  This function stores a matrix and its inverse. 
-##
 ##  Input arguments:
 ##      * matrixToCache - input matrix to cache
-## 
 ##  Return:
 ##      * a list l containing four functions to get or set the cached matrix or 
 ##        its cached inverse:
