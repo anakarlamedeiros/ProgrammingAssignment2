@@ -39,7 +39,7 @@ makeCacheMatrix <- function(matrixToCache = matrix()) {
         cachedMatrix <<- newMatrixToCache
         inverse_cachedMatrix <<- NULL
     }
-    ## functionto get the cached matrix
+    ## function to get the cached matrix
     get <- function() cachedMatrix
     
     ## function to set the cached inverse 
