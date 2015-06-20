@@ -10,26 +10,52 @@
 ##                     will be cached after the first computation.
 ## 
 ## Hereby an example of how to use these functions:
-##      m <- matrix(c(4,2,7,6),2,2)             ##create a matrix m
-##      cachedMatrix <- makeCacheMatrix(m)      ## store m in a cache
-##      inverse_m <- cacheSolve(cachedMatrix)   ## returns the inverse of m stored in 'cached matrix' 
+##      1. m <- matrix(c(4,2,7,6),2,2)             ## creates a matrix 'm'
+##      2. cachedMatrix <- makeCacheMatrix(m)      ## stores the matrix 'm' in a cache
+##      3. inverse_m <- cacheSolve(cachedMatrix)   ## returns the inverse of 'm' stored in 'cachedMatrix' 
 ##
+
+
+
+##  Funtion: makeCachedMatrix:
 ##
+##  This function stores a matrix and its inverse. 
+##
+##  Input arguments:
+##      * matrixToCache - input matrix to cache
+## 
+##  Return:
+##      * a list l containing four functions to get or set the cached matrix or 
+##        its cached inverse:
+##              1. l$get() - returns the currently cached matrix
+##              2. l$set(newMatrixToCache) - the cached matrix is set to input 'newMatrixToCache'
+##              3. l$getInverse() - returns the currenlty cached inverse 
+##              4. l$setInverse(inverseToCache) - sets the cached inverse to 'inverseToCache'
 ##
 makeCacheMatrix <- function(matrixToCache = matrix()) {
+    
+    ## the two cached variables
     cachedMatrix <- matrixToCache
     inverse_cachedMatrix <- NULL
+    
+    ## function to set the cached matrix
     set <- function(newMatrixToCache) {
         cachedMatrix <<- newMatrixToCache
         inverse_cachedMatrix <<- NULL
     }
+    ## functionto get the cached matrix
     get <- function() cachedMatrix
-    setInverse <- function(inverse) inverse_cachedMatrix <<- inverse
+    
+    ## function to set the cached inverse 
+    setInverse <- function(inverseToCache) inverse_cachedMatrix <<- inverseToCache
+    
+    ##function to get the cached inverse
     getInverse <- function() inverse_cachedMatrix
+    
+    ##return list with the 4 functions to get/set matrix and its inverse
     list(set= set, get = get,
          setInverse = setInverse,
          getInverse = getInverse)
-
 }
 
 
