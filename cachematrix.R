@@ -68,7 +68,7 @@ makeCacheMatrix <- function(matrixToCache = matrix()) {
 ##
 cacheSolve <- function(matrix, ...) {
     
-    #retrieving the currently stored inverse of matrix        
+    #retrieving the currently stored value for the inverse of matrix        
     inverse <- matrix$getInverse()
     
     #testing whether inverse needs to be calculated
