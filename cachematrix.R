@@ -1,7 +1,7 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
+## IMPORTANT: These functions assume that the matrix supplied is always invertible!
 
 makeCacheMatrix <- function(matrixToCache = matrix()) {
     cachedMatrix <- matrixToCache
@@ -32,5 +32,5 @@ cacheSolve <- function(matrix, ...) {
     cachedMatrix <- matrix$get()
     inverse <- solve(cachedMatrix, ...)
     matrix$setInverse(inverse)
-    inverse
+    return(inverse)
 }
