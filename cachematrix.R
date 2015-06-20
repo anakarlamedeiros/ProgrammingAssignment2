@@ -16,7 +16,7 @@
 ## Note: Both functions assume that the supplied matrix is invertible!
 
 
-##  Funtion: makeCachedMatrix.
+##  Function: makeCachedMatrix
 ##  This function stores a matrix and its inverse. 
 ##  Input arguments:
 ##      * matrixToCache - input matrix to cache
@@ -25,7 +25,7 @@
 ##        its cached inverse:
 ##              1. l$get() - returns the currently cached matrix
 ##              2. l$set(newMatrixToCache) - the cached matrix is set to input 'newMatrixToCache'
-##              3. l$getInverse() - returns the currenlty cached inverse 
+##              3. l$getInverse() - returns the currently cached inverse 
 ##              4. l$setInverse(inverseToCache) - sets the cached inverse to 'inverseToCache'
 ##
 makeCacheMatrix <- function(matrixToCache = matrix()) {
@@ -55,16 +55,30 @@ makeCacheMatrix <- function(matrixToCache = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+##  Function: cacheSolve
+##  This function returns the inverse of a matrix created using the function 
+##  'makeCacheMatrix' above. In case matrix has already a cached inverse, this value 
+##  will be returned. Otherwise, this function computes the inverse of the matrix, 
+##  caches this inverse and returns it.
+##  Input arguments:
+##      * matrix - input matrix to which the inverse should be returned. Note that
+##                 matrix should be created by using the function 'makeCachedMatrix'
+##  Return:
+##      * the inverse of supplied input matrix
+##
 cacheSolve <- function(matrix, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    
+    #retrieving the currently stored inverse of matrix        
     inverse <- matrix$getInverse()
+    
+    #testing whether inverse needs to be calculated
     if(is.null(inverse)) {
         message("Inverse not yet cached. Performing calculations...")
         cachedMatrix <- matrix$get()
         inverse <- solve(cachedMatrix, ...)
         matrix$setInverse(inverse)
-    }    
+    }
+
+    #returning the cached value for the inverse of matrix
     return(inverse)
 }
